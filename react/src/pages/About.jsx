@@ -1,49 +1,80 @@
 import { motion } from 'framer-motion';
 
 export default function About() {
-  const skills = ["React", "Node.js", "Algorithms", "Data Structures", "Agile Methodology", "Git/GitHub", "Linear Algebra", "Software Architecture"];
+  const techSkills = [
+    "Java", "Python", "C/C++", "C#", "TypeScript", 
+    "React", "Bun", "Docker", "AWS (Lambda, ECR)", 
+    "Azure", "SQL", "Tailwind"
+  ];
 
   return (
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto"
+      className="min-h-screen pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        {/* Main Bio Card */}
+        <div className="lg:col-span-8 glass-card p-10 rounded-3xl">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-8">
-            Behind the Code.
+            The Journey So Far.
           </h2>
-          <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
+          <div className="space-y-6 text-gray-300 text-lg leading-relaxed font-light">
             <p>
-              My journey into software engineering is driven by a desire to turn abstract concepts into tangible, functioning systems. Whether collaborating on complex full-stack applications for CS 373 or grinding out algorithmic test cases on Kattis, I thrive on problem-solving.
+              I am currently pursuing my <strong className="text-white font-medium">B.S. in Computer Science</strong> with a Minor in History at <strong className="text-accent font-medium">The University of Texas at Austin</strong> (Class of 2028). 
             </p>
             <p>
-              I spend a lot of my time at the GDC campus facility diving into documentation and refining system architecture. But code isn't everything. I firmly believe that the best logic comes from a well-rested mind. Recently, I stepped away from the screens for a 12-day Caribbean cruise, ziplining through forests and recharging my creative batteries in San Juan and St. Maarten.
+              My focus is on full-stack development, cloud architecture, and creating software that makes a tangible impact. Right now, I'm working as an <strong className="text-white font-medium">Undergraduate Course Assistant</strong> for Software Engineering, where I help students master tools like AWS, GCP, PostgreSQL, and continuous integration pipelines.
             </p>
             <p>
-              When I'm back at The Block student housing, it's all about balancing rigorous coursework with creative web projects like this one.
+              Beyond the code editor, I am heavily involved in campus life. I serve as a <strong className="text-white font-medium">Representative for UT Student Government</strong>, advocating for over 13,000 students in the College of Natural Sciences. I also work as a <strong className="text-white font-medium">Senior Internal Officer for ACM</strong>, mentoring freshmen and hosting professional development workshops.
             </p>
           </div>
         </div>
 
-        <div className="bg-cardBg p-8 rounded-2xl border border-gray-800 shadow-2xl relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-[50px] group-hover:bg-accent/20 transition-all duration-500" />
-          <h3 className="text-2xl font-bold text-white mb-6">Technical Arsenal</h3>
-          <div className="flex flex-wrap gap-3">
-            {skills.map((skill, index) => (
-              <motion.span 
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1 }}
-                className="px-4 py-2 bg-darkBg border border-gray-700 text-accent rounded-lg text-sm font-medium hover:border-accent hover:shadow-[0_0_10px_rgba(56,189,248,0.2)] transition-all cursor-default"
-              >
-                {skill}
-              </motion.span>
-            ))}
+        {/* Sidebar Cards */}
+        <div className="lg:col-span-4 space-y-8">
+          
+          {/* Quick Facts Card */}
+          <div className="glass-card p-8 rounded-3xl relative overflow-hidden">
+            <div className="absolute -right-10 -top-10 text-9xl text-white/5 font-black pointer-events-none">🤘</div>
+            <h3 className="text-xl font-bold text-accent mb-6 font-mono">Quick Facts</h3>
+            <ul className="space-y-4 text-sm text-gray-300">
+              <li className="flex items-start gap-3">
+                <span className="text-xl">📍</span> 
+                <span>Based in Austin, TX</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-xl">📚</span> 
+                <span>Technical Reviewer for Packt Publishing (Blazor WebAssembly)</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-xl">🚢</span> 
+                <span>Recently recharged on a 12-day Caribbean Zipline Cruise</span>
+              </li>
+            </ul>
           </div>
+
+          {/* Skills Card */}
+          <div className="glass-card p-8 rounded-3xl">
+            <h3 className="text-xl font-bold text-white mb-6">Technical Arsenal</h3>
+            <div className="flex flex-wrap gap-2">
+              {techSkills.map((skill, index) => (
+                <motion.span 
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: index * 0.05 }}
+                  className="px-3 py-1.5 bg-darkBg/50 border border-gray-700/50 text-gray-300 rounded-lg text-sm hover:border-accent hover:text-accent transition-colors cursor-default"
+                >
+                  {skill}
+                </motion.span>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
     </motion.div>
